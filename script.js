@@ -148,8 +148,12 @@ document.write(`
 for (const object of toDoList) {
     document.write(`
     <tr>
-        <td>${object.startedAt.getHours() + ':' + object.startedAt.getMinutes() + 0}</td>
-        <td>${object.finishedAt.getHours() + ':' + object.finishedAt.getMinutes() + 0}</td>`)
+        <td>
+        ${object.startedAt.getMinutes() > 0 ? object.startedAt.getHours() + ':' + object.startedAt.getMinutes() : object.startedAt.getHours() + ':' + object.startedAt.getMinutes() + 0}
+        </td>
+        <td>
+        ${object.finishedAt.getMinutes() > 0 ? object.finishedAt.getHours() + ':' + object.finishedAt.getMinutes() : object.finishedAt.getHours() + ':' + object.finishedAt.getMinutes() + 0}
+        </td>`)
     if(object.totaltime <= 2){
         document.write(`<td class = "color-green">${object.totaltime}</td>`)
     } else if(object.totaltime > 2 && object.totaltime <= 5){

@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+  color: rgb(231, 225, 225);
+}
+
+table {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  margin-top: 10%;
+}
+
+th {
+  background-color: rgb(75, 75, 75);
+  border-radius: 5px;
+  padding: 0.7rem;
+}
+
+td {
+  background-color: rgb(143, 141, 141);
+  border-radius: 5px;
+  padding: 0.7rem;
+}
+
+.color-green {
+  background-color: green;
+}
+
+.color-orange {
+  background-color: rgb(197, 129, 3);
+}
+
+.color-red {
+  background-color: red;
+}
+
+.color-light-blue {
+  background-color: rgb(99, 172, 197);
+}
+
+.color-blue {
+  background-color: blue;
+}
+
+.color-deep-blue {
+  background-color: rgb(3, 3, 116);
+}

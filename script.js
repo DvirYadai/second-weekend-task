@@ -133,43 +133,122 @@ for (const object of toDoList) {
 
 // Adding table.
 
-document.write(`
-<table>
-    <tr>
-        <th>Started at</th>
-        <th>Finished at</th>
-        <th>Total Time Spent</th>
-        <th>Tasks given</th>
-        <th>Tasks Finished</th>
-        <th>Tasks Finished %</th>
-        <th>Topic</th>
-    </tr>`)
+const table = document.createElement('table');
+const tableRow = document.createElement('tr');
+
+table.appendChild(tableRow);
+document.body.appendChild(table);
+
+const tableHead1 = document.createElement('th');
+tableHead1.textContent = 'Started at';
+tableRow.append(tableHead1);
+const tableHead2 = document.createElement('th');
+tableHead2.textContent = 'Finished at';
+tableRow.append(tableHead2);
+const tableHead3 = document.createElement('th');
+tableHead3.textContent = 'Total Time Spent';
+tableRow.append(tableHead3);
+const tableHead4 = document.createElement('th');
+tableHead4.textContent = 'Tasks given';
+tableRow.append(tableHead4);
+const tableHead5 = document.createElement('th');
+tableHead5.textContent = 'Tasks Finished';
+tableRow.append(tableHead5);
+const tableHead6 = document.createElement('th');
+tableHead6.textContent = 'Tasks Finished %';
+tableRow.append(tableHead6);
+const tableHead7 = document.createElement('th');
+tableHead7.textContent = 'Topic';
+tableRow.append(tableHead7);
+
 
 for (const object of toDoList) {
-    document.write(`
-    <tr>
-        <td>
-        ${object.startedAt.getMinutes() > 0 ? object.startedAt.getHours() + ':' + object.startedAt.getMinutes() : object.startedAt.getHours() + ':' + object.startedAt.getMinutes() + 0}
-        </td>
-        <td>
-        ${object.finishedAt.getMinutes() > 0 ? object.finishedAt.getHours() + ':' + object.finishedAt.getMinutes() : object.finishedAt.getHours() + ':' + object.finishedAt.getMinutes() + 0}
-        </td>`)
+    const newTableRow = document.createElement('tr');
+    table.appendChild(newTableRow);
+
+    const newTdStartTime = document.createElement('td');
+    newTdStartTime.textContent = object.startedAt.getMinutes() > 0 ? object.startedAt.getHours() + ':' + object.startedAt.getMinutes() : object.startedAt.getHours() + ':' + object.startedAt.getMinutes() + 0;
+    newTableRow.appendChild(newTdStartTime);
+
+    const newTdFinishedTime = document.createElement('td');
+    newTdFinishedTime.textContent = object.finishedAt.getMinutes() > 0 ? object.finishedAt.getHours() + ':' + object.finishedAt.getMinutes() : object.finishedAt.getHours() + ':' + object.finishedAt.getMinutes() + 0;
+    newTableRow.appendChild(newTdFinishedTime);
+
+    const newTdTotalTime = document.createElement('td');
+    newTdTotalTime.textContent = object.totaltime;
+    newTableRow.appendChild(newTdTotalTime);
+    
     if(object.totaltime <= 2){
-        document.write(`<td class = "color-green">${object.totaltime}</td>`)
+        newTdTotalTime.classList.add("color-green");
     } else if(object.totaltime > 2 && object.totaltime <= 5){
-        document.write(`<td class = "color-orange">${object.totaltime}</td>`)
-    } else document.write(`<td class = "color-red">${object.totaltime}</td>`)
-    document.write(`
-        <td>${object.tasksGiven}</td>
-        <td>${object.tasksFinished}</td>`)
+        newTdTotalTime.classList.add("color-orange");
+    } else newTdTotalTime.classList.add("color-red");
+
+    const newTdTasksGiven = document.createElement('td');
+    newTdTasksGiven.textContent = object.tasksGiven;
+    newTableRow.appendChild(newTdTasksGiven);
+
+    const newTdTasksFinished = document.createElement('td');
+    newTdTasksFinished.textContent = object.tasksFinished;
+    newTableRow.appendChild(newTdTasksFinished);
+
+    const newTdTasksFinishedPercent = document.createElement('td');
+    newTdTasksFinishedPercent.textContent = object.tasksFinishedPrecent + '%';
+    newTableRow.appendChild(newTdTasksFinishedPercent);
+
     if(object.tasksFinishedPrecent <= 50){
-        document.write(`<td class = "color-light-blue">${object.tasksFinishedPrecent}</td>`)
+        newTdTasksFinishedPercent.classList.add("color-light-blue");
     } else if(object.tasksFinishedPrecent > 50 && object.tasksFinishedPrecent <= 75){
-        document.write(`<td class = "color-blue">${object.tasksFinishedPrecent}</td>`)
-    } else document.write(`<td class = "color-deep-blue">${object.tasksFinishedPrecent}</td>`)
-    document.write(`<td>${object.topic}</td></tr>`)
+        newTdTasksFinishedPercent.classList.add("color-blue");
+    } else newTdTasksFinishedPercent.classList.add("color-deep-blue");
+
+    const newTdTopic = document.createElement('td');
+    newTdTopic.textContent = object.topic;
+    newTableRow.appendChild(newTdTopic);
 }
-document.write(`</table>`)
+
+
+
+
+// Old solution below.
+
+// document.write(`
+// <table>
+//     <tr>
+//         <th>Started at</th>
+//         <th>Finished at</th>
+//         <th>Total Time Spent</th>
+//         <th>Tasks given</th>
+//         <th>Tasks Finished</th>
+//         <th>Tasks Finished %</th>
+//         <th>Topic</th>
+//     </tr>`)
+
+// for (const object of toDoList) {
+//     document.write(`
+//     <tr>
+//         <td>
+//         ${object.startedAt.getMinutes() > 0 ? object.startedAt.getHours() + ':' + object.startedAt.getMinutes() : object.startedAt.getHours() + ':' + object.startedAt.getMinutes() + 0}
+//         </td>
+//         <td>
+//         ${object.finishedAt.getMinutes() > 0 ? object.finishedAt.getHours() + ':' + object.finishedAt.getMinutes() : object.finishedAt.getHours() + ':' + object.finishedAt.getMinutes() + 0}
+//         </td>`)
+//     if(object.totaltime <= 2){
+//         document.write(`<td class = "color-green">${object.totaltime}</td>`)
+//     } else if(object.totaltime > 2 && object.totaltime <= 5){
+//         document.write(`<td class = "color-orange">${object.totaltime}</td>`)
+//     } else document.write(`<td class = "color-red">${object.totaltime}</td>`)
+//     document.write(`
+//         <td>${object.tasksGiven}</td>
+//         <td>${object.tasksFinished}</td>`)
+//     if(object.tasksFinishedPrecent <= 50){
+//         document.write(`<td class = "color-light-blue">${object.tasksFinishedPrecent}</td>`)
+//     } else if(object.tasksFinishedPrecent > 50 && object.tasksFinishedPrecent <= 75){
+//         document.write(`<td class = "color-blue">${object.tasksFinishedPrecent}</td>`)
+//     } else document.write(`<td class = "color-deep-blue">${object.tasksFinishedPrecent}</td>`)
+//     document.write(`<td>${object.topic}</td></tr>`)
+// }
+// document.write(`</table>`)
 
 
 
